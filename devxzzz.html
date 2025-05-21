@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devxzz Developer</title>
+  <link rel="icon" href="https://files.catbox.moe/29ih7h.jpg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif;}
+    body {background: #000; color: #fff; scroll-behavior: smooth;}
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #111;
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      z-index: 999;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav a {
+      display: inline-block;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      padding: 5px 12px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    nav a:hover {background: #ffd700; color: #000;}
+    section {
+      min-height: 100vh; padding: 80px 20px 40px;
+      display: none; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+    }
+    section.active {
+      display: flex; animation: fade 0.5s ease-in;
+    }
+    @keyframes fade {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .gold {color: #ffd700;}
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid #ffd700;
+  box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700, 0 0 60px #ffd700;
+  animation: pulse-glow 1s infinite alternate;
+  margin-bottom: 20px;
+}
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px white, 0 0 20px #ffffff, 0 0 30px #ffffff;
+  }
+  100% {
+    box-shadow: 0 0 30px #ffd700, 0 0 60px #ffd700, 0 0 90px #ffd700;
+  }
+}
+    .profile-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .bar-container {
+      width: 100%; max-width: 500px; margin: 15px auto;
+      background: #222; border-radius: 20px; overflow: hidden;
+    }
+    .bar {
+      height: 24px; background: #ffd700;
+      line-height: 24px; text-align: right; padding-right: 10px;
+      font-weight: bold; color: #000;
+    }
+    .project, .service, .quote {
+      background: #111; border-left: 5px solid #ffd700;
+      margin: 15px auto; padding: 20px;
+      border-radius: 10px; max-width: 600px;
+    }
+.quote {
+  font-style: italic;
+  background: #111;
+  border-left: 5px solid #ffd700;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 120px; /* Tambahkan ini untuk tinggi minimum */
+  box-sizing: border-box;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.quote p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.quote .copy-btn {
+  margin-top: 10px;
+}
+    .social {
+      display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; justify-content: center;
+    }
+    .social a { font-size: 30px; color: #fff; transition: 0.3s; }
+    .social a:hover { color: #ffd700; }
+    .payment-box {
+      background: #111; padding: 20px; border-radius: 10px;
+      border: 1px solid #ffd700; max-width: 500px; width: 100%; margin: 10px;
+    }
+    .copy-btn {
+      background: #ffd700; color: #000; border: none;
+      padding: 5px 12px; border-radius: 6px; cursor: pointer;
+      font-weight: bold; transition: 0.3s;
+      margin: 10px 0;
+    }
+    .copy-btn:hover {background: #fff200;}
+    .qr {width: 150px; margin: 10px auto; border: 2px solid #ffd700;
+      padding: 5px; border-radius: 10px;}
+    .btn-start {
+      margin-top: 30px; background: #ffd700; color: #000;
+      padding: 10px 20px; font-size: 18px; font-weight: bold;
+      border: none; border-radius: 8px; cursor: pointer;
+    }
+    a.download-link {
+      display: inline-block; margin-top: 10px;
+      background: #ffd700; color: #000;
+      padding: 8px 15px; border-radius: 6px;
+      text-decoration: none; font-weight: bold;
+    }
+    .service {
+      background: #111;
+      border-left: 5px solid #ffd700;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-align: left;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 10px #000000aa;
+      margin: 15px;
+    }
+    .service h3 {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ffd700;
+    }
+    .service p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .service .copy-btn {
+      margin-top: 10px;
+    }
+    .video-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 20px 0;
+    }
+    .video-container video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#services">Layanan</a>
+  <a href="#blog">Blog</a>
+  <a href="#payment">Payment</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="active" id="intro">
+  <div class="profile-wrapper">
+    <img class="avatar" src="https://files.catbox.moe/29ih7h.jpg" alt="Avatar">
+    <h1 class="gold">Let's go to Devxzz Developer</h1>
+    <p>Saya adalah seorang desainer muda yang senang berbagi pengetahuan dan membuat project desain yang keren!</p>
+  </div>
+  <button class="btn-start" onclick="showSection('home'); playMusic()">Masuk</button>
+</section>
+
+<audio id="background-music" loop>
+  <source src="https://files.catbox.moe/k6i5c2.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<section id="home">
+  <img class="avatar" src="https://files.catbox.moe/29ih7h.jpg" alt="Avatar">
+  <h2 class="gold">Devxzz - Developer</h2>
+  <p>Saya adalah desainer yang kreatif dan memiliki passion dalam menciptakan desain yang estetis dan fungsional. Saya senang membuat desain logo, UI/UX, dan visual yang menarik. Fokus saya adalah menciptakan desain yang tidak hanya cantik, tetapi juga efektif dalam mengkomunikasikan pesan. Saya percaya bahwa desain yang baik dapat membuat perbedaan besar dalam pengalaman pengguna.</p>
+</section>
+
+<section id="about">
+  <h2 class="gold">Favorit Makanan</h2>
+  <div class="bar-container"><div class="bar" style="width: 90%">Nasi Goreng - 80%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 100%">Mie Ayam - 1000%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 50%">Bakso - 60%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 100%">Martabak - 50%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 100%">Seblak - 100%</div></div>
+
+  <h2 class="gold" style="margin-top: 40px;">Skill Design</h2>
+  <div class="bar-container"><div class="bar" style="width: 95%">TESTIMONI - 95%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 95%">CHIBI - 90%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 90%">POSTER - 80%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 70%">LIST - 90%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 65%">LOGO 3D - 50%</div></div>
+  <div class="bar-container"><div class="bar" style="width: 40%">TEKS - 100%</div></div>
+
+  <div class="video-container">
+    <video autoplay loop muted>
+      <source src="https://files.catbox.moe/6seuxy.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2 class="gold">Project Saya</h2>
+  <div class="project">
+    <strong class="gold">Destructive V3</strong><br>
+    Bot crash ware untul whatsapp, yang terkenal ganas serta tidak rawan banned.<br>
+    <a class="download-link" href="https://www.mediafire.com/file/xxx/alpinpushv2.zip/file" target="_blank">Download Project</a>
+  </div>
+  <div class="project">
+    <strong class="gold">AlpinPushV2</strong><br>
+    Bot push kontak premium yang bisa kamu gunakan tanpa biaya apa pun cuy<br>
+    <a class="download-link" href="https://www.mediafire.com/file/xxx/alpinpushv2.zip/file" target="_blank">Download Project</a>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="gold">Layanan yang Saya Sediakan</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    <div class="service">
+      <i class="fab fa-whatsapp gold" style="font-size: 24px;"></i>
+      <h3>Script Bot (sc enc)</h3>
+      <p>Custom bot sesuai kebutuhan kamu, bisa auto-reply, downloader, push kontak, dsb.</p>
+      <button class="copy-btn">Saya Mau Beli</button>
+    </div>
+
+    <div class="service">
+      <i class="fas fa-globe gold" style="font-size: 24px;"></i>
+      <h3>Jasa Pembuatan Logo</h3>
+      <p>Testimoni, chibi, poster,logo 3d? Bisa semua. Desain keren dan kece.</p>
+      <button class="copy-btn">Saya Mau Beli</button>
+    </div>
+
+    <div class="service">
+      <i class="fas fa-server gold" style="font-size: 24px;"></i>
+      <h3>Jual Panel Pterodactyl</h3>
+      <p>Panel hosting untuk deploy Minecraft, Bot, Web, lengkap dengan auto-install.</p>
+      <button class="copy-btn">Saya Mau Beli</button>
+    </div>
+
+    <div class="service">
+      <i class="fas fa-code gold" style="font-size: 24px;"></i>
+      <h3>Jasa Suntik Sosmed</h3>
+      <p>Menerima orderan all sosmed,soal harga? pastinya murah!</p>
+      <button class="copy-btn">Saya Mau Beli</button>
+    </div>
+
+    <div class="service">
+      <i class="fas fa-terminal gold" style="font-size: 24px;"></i>
+      <h3>Jasa Pembuatan Logo</h3>
+      <p>Testimoni, chibi, poster,logo 3d? Bisa semua. Desing pastinya keren dan kece.</p>
+      <button class="copy-btn">Saya Mau Beli</button>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <h2 class="gold">Quotes Motivasi</h2>
+
+  <div class="quote">
+    <p>"Jangan menyerah, awal yang sulit adalah awal dari keberhasilan."</p>
+    <button class="copy-btn" onclick="copyText('Jangan menyerah, awal yang sulit adalah awal dari keberhasilan.')">Salin</button>
+  </div>
+
+  <div class="quote">
+    <p>"Teruslah berjalan meski langkahmu goyah."</p>
+    <button class="copy-btn" onclick="copyText('Teruslah berjalan meski langkahmu goyah.')">Salin</button>
+  </div>
+
+  <div class="quote">
+    <p>"Semua akan indah pada waktunya."</p>
+    <button class="copy-btn" onclick="copyText('Semua akan indah pada waktunya.')">Salin</button>
+  </div>
+
+  <div class="quote">
+    <p>"Hidup adalah proses belajar yang tiada akhir."</p>
+    <button class="copy-btn" onclick="copyText('Hidup adalah proses belajar yang tiada akhir.')">Salin</button>
+  </div>
+
+  <div class="quote">
+    <p>"Kegagalan adalah jalan menuju kesuksesan."</p>
+    <button class="copy-btn" onclick="copyText('Kegagalan adalah jalan menuju kesuksesan.')">Salin</button>
+  </div>
+
+  <div class="quote">
+    <p>"Percayalah, kamu bisa!"</p>
+    <button class="copy-btn" onclick="copyText('Percayalah, kamu bisa!')">Salin</button>
+  </div>
+
+  <div class="quote">
+    <p>"Semangatmu hari ini adalah kesuksesanmu esok hari."</p>
+    <button class="copy-btn" onclick="copyText('Semangatmu hari ini adalah kesuksesanmu esok hari.')">Salin</button>
+  </div>
+</section>
+
+<section id="payment">
+  <h2 class="gold">Pilihan Pembayaran</h2>
+  <div class="payment-box">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <p><i class="fab fa-digital-ocean gold"></i> DANA: <strong>085355013590</strong></p>
+      <button class="copy-btn" onclick="copyText('085355013590')">Salin</button>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <p><i class="fab fa-google-pay gold"></i> GoPay: <strong>082272318907</strong></p>
+      <button class="copy-btn" onclick="copyText('082272318907')">Salin</button>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <p><i class="fab fa-android gold"></i> OVO: <strong>082272318907</strong></p>
+      <button class="copy-btn" onclick="copyText('082272318907')">Salin</button>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <img class="qr" src="https://files.catbox.moe/zov62h.png" alt="QRIS">
+      <br>
+      <a href="https://files.catbox.moe/zov62h.png" download>
+        <button class="copy-btn" style="margin-top: 10px;">Download QR</button>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="gold">Hubungi Saya</h2>
+  <p>Silakan hubungi saya melalui sosial media berikut:</p>
+  <div class="social">
+    <a href="https://instagram.com/444devzz"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/devzz999"><i class="fab fa-telegram"></i></a>
+    <a href="https://wa.me/6285355013590"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:defry414@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</section>
+
+<script>
+  const links = document.querySelectorAll('nav a');
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.getAttribute('href').substring(1);
+      showSection(target);
+    });
+  });
+
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => alert('Disalin: ' + text));
+  }
+
+  function playMusic() {
+    document.getElementById("background-music").play();
+  }
+</script>
+
+</body>
+</html>
